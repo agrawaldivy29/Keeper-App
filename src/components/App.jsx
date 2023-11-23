@@ -5,19 +5,23 @@ import Note from "./Note";
 import notes from "../notes";
 
 function EnterNote(currentNote) {
-    return <Note
-        key={currentNote.key}
-        title={currentNote.title}
-        content={currentNote.content}
+  return (
+    <Note
+      key={currentNote.key}
+      title={currentNote.title}
+      content={currentNote.content}
     />
+  );
 }
 
 function App() {
-    return <div>
-        <Header />
-        {notes.map(EnterNote)}
-        <Footer />
+  return (
+    <div>
+      <Header />
+      {notes.map(EnterNote)}
+      <Footer />
     </div>
+  );
 }
 
 export default App;
