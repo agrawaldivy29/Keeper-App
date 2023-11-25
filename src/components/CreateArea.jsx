@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 function CreateArea(props) {
-  
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   function handleTitle(event) {
@@ -10,18 +9,30 @@ function CreateArea(props) {
   function handleContent(event) {
     setContent(event.target.value);
   }
-  
+  function handleClick(event) {
+    props.addNote(title, content);
+    setTitle("");
+    setContent("");
+    event.preventDefault();
+  }
+
   return (
     <div>
       <form>
-        <input name="title" placeholder="Title" value={title} onChange={handleTitle} />
-        <textarea name="content" placeholder="Take a note..." rows="3" value={content} onChange={handleContent} />
-        <button onClick={() => {
-          props.addNote(title, content)
-          setTitle("");
-          setContent("");
-          event.preventDefault();
-        }}>Add</button>
+        <input
+          name="title"
+          placeholder="Title"
+          value={title}
+          onChange={handleTitle}
+        />
+        <textarea
+          name="content"
+          placeholder="Take a note..."
+          rows="3"
+          value={content}
+          onChange={handleContent}
+        />
+        <button onClick={handleClick}>Add</button>
       </form>
     </div>
   );

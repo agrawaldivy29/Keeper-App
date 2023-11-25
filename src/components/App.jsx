@@ -5,7 +5,6 @@ import Note from "./Note";
 import CreateArea from "./CreateArea";
 
 function App() {
-  
   const [notes, setNotes] = useState([]);
 
   function addNote(title, content) {
@@ -18,16 +17,14 @@ function App() {
     setNotes((prevNotes) => {
       return prevNotes.filter((noteItem, index) => {
         return index !== id;
-      })
-    })
+      });
+    });
   }
 
   return (
     <div>
       <Header />
-      <CreateArea
-        addNote={addNote}
-      />
+      <CreateArea addNote={addNote} />
       {notes.map((noteItem, index) => {
         return (
           <Note
@@ -39,7 +36,6 @@ function App() {
           />
         );
       })}
-      {/* <Note key={1} title="Note title" content="Note content" /> */}
       <Footer />
     </div>
   );
